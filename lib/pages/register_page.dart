@@ -14,6 +14,8 @@ class _RegisterPageState extends State<RegisterPage> {
   String _password = '';
   String _confirmPassword = '';
 
+  bool _obscureText = true;
+
   final _formKey = GlobalKey<FormState>();
   void _submit() {
     final form = _formKey.currentState;
@@ -110,23 +112,35 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                     const SizedBox(height: 20.0),
                     TextFormField(
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         labelText: 'Password',
                         hintText: 'Enter your password',
-                        labelStyle: TextStyle(
+                        labelStyle: const TextStyle(
                           color: Colors.white,
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
-                        icon: Icon(Icons.lock),
-                        enabledBorder: OutlineInputBorder(
+                        icon: const Icon(Icons.lock),
+                        suffixIcon: GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              _obscureText = !_obscureText;
+                            });
+                          },
+                          child: Icon(
+                            _obscureText
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                          ),
+                        ),
+                        enabledBorder: const OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.white),
                         ),
-                        focusedBorder: OutlineInputBorder(
+                        focusedBorder: const OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.lightGreen),
                         ),
                       ),
-                      obscureText: true,
+                      obscureText: _obscureText,
                       validator: (value) {
                         if (value == null) {
                           return 'Please enter your password';
@@ -216,11 +230,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                     TextButton(
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const LoginScreen()),
-                        );
+                        Navigator.pushReplacementNamed(context, '/login');
                       },
                       style: TextButton.styleFrom(
                         textStyle: const TextStyle(

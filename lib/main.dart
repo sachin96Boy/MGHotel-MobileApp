@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mymgstoreapp/pages/login_page.dart';
 import 'package:mymgstoreapp/pages/register_page.dart';
 
 void main() {
@@ -52,6 +53,10 @@ class MyApp extends StatelessWidget {
             ),
           )),
       home: const RegisterPage(),
+      routes: {
+        '/register': (context) => const RegisterPage(),
+        '/login': (context) => const LoginScreen(),
+      },
     );
   }
 }
