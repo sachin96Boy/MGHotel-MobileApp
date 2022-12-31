@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mymgstoreapp/pages/register_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
             ),
           ),
           colorScheme: ColorScheme.fromSwatch().copyWith(
-            primary: Colors.red[800],
+            primary: Colors.brown[400],
             secondary: Colors.lightGreen[400],
             brightness: Brightness.dark,
           ),
@@ -50,8 +51,7 @@ class MyApp extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           )),
-      // home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const RegisterPage(),
     );
   }
 }
-
