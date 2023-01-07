@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mymgstoreapp/pages/register_page.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
